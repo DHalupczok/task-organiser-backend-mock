@@ -23,7 +23,7 @@ This app is purely mock api that will serve to develop task organiser frontend a
 | Get all users           | /api/v1/users/           | GET    |                                  | Authorization: bearer [access_token] | 200, 401       | IUser[]                                                                            | content-type: application/json |
 | Create new user         | /api/v1/users/           | POST   | {}:IUser                         | Authorization: bearer [access_token] | 201, 401       | {}:IUser                                                                           | content-type: application/json |
 | Edit existing user      | /api/v1/users/:id        | PUT    | {}:IUser                         | Authorization: bearer [access_token] | 200, 401       | IUser[]                                                                            | content-type: application/json |
-| Delete task             | /api/v1/users/:id        | DELETE |                                  | Authorization: bearer [access_token] | 200, 401       | IUser[]                                                                            | content-type: application/json |
+| Delete user             | /api/v1/users/:id        | DELETE |                                  | Authorization: bearer [access_token] | 200, 401       | IUser[]                                                                            | content-type: application/json |
 
 ## Data interfaces
 
