@@ -17,21 +17,21 @@ This app is purely mock api that will serve to develop task organiser frontend a
 | Edit existing type      | /api/v1/types/:projectId | PUT    | {}:IType                         | Authorization: bearer [access_token] | 200, 401       | {}:IProject                                                                        | content-type: application/json |
 | Delete type             | /api/v1/types/:projectId | DELETE |                                  | Authorization: bearer [access_token] | 200, 401       | IProject[]                                                                         | content-type: application/json |
 | Get all tasks           | /api/v1/tasks/:projectId | GET    |                                  | Authorization: bearer [access_token] | 200, 401       | ITask[]                                                                            | content-type: application/json |
-| Create new task         | /api/v1/tasks/:projectId | POST   | {}:ITask                         | Authorization: bearer [access_token] | 201, 401       | ITask[]                                                                            | content-type: application/json |
-| Edit existing task      | /api/v1/tasks/:projectId | PUT    | {}:ITask                         | Authorization: bearer [access_token] | 200, 401       | {}:ITask[]                                                                         | content-type: application/json |
-| Delete task             | /api/v1/tasks/:projectId | DELETE |                                  | Authorization: bearer [access_token] | 200, 401       | ITask[]                                                                            | content-type: application/json |
+| Create new task         | /api/v1/tasks            | POST   | {}:ITask                         | Authorization: bearer [access_token] | 201, 401       | ITask[]                                                                            | content-type: application/json |
+| Edit existing task      | /api/v1/tasks            | PUT    | {}:ITask                         | Authorization: bearer [access_token] | 200, 401, 404  | {}:ITask[]                                                                         | content-type: application/json |
+| Delete task             | /api/v1/tasks/:taskId    | DELETE |                                  | Authorization: bearer [access_token] | 200, 401, 404  | ITask[]                                                                            | content-type: application/json |
 | Get all users           | /api/v1/users/           | GET    |                                  | Authorization: bearer [access_token] | 200, 401       | IUser[]                                                                            | content-type: application/json |
 | Create new user         | /api/v1/users/           | POST   | {}:IUser                         | Authorization: bearer [access_token] | 201, 401       | {}:IUser                                                                           | content-type: application/json |
-| Edit existing user      | /api/v1/users/:id        | PUT    | {}:IUser                         | Authorization: bearer [access_token] | 200, 401       | IUser[]                                                                            | content-type: application/json |
-| Delete user             | /api/v1/users/:id        | DELETE |                                  | Authorization: bearer [access_token] | 200, 401       | IUser[]                                                                            | content-type: application/json |
+| Edit existing user      | /api/v1/users/:id        | PUT    | {}:IUser                         | Authorization: bearer [access_token] | 200, 401, 404  | IUser[]                                                                            | content-type: application/json |
+| Delete user             | /api/v1/users/:id        | DELETE |                                  | Authorization: bearer [access_token] | 200, 401, 404  | IUser[]                                                                            | content-type: application/json |
 
 ## Data interfaces
 
 
-| Interface, Enum or Type name | Interface, Enum or Type structure                                                                              |
-|------------------------------|----------------------------------------------------------------------------------------------------------------|
-| ITask                        | {id?: string, title: string, startDate: Date, stopDate: Date, repeatability: ERepeatability, content: string } |
-| ERepeatability               | {0 = None,1 =  daily, 2 = weakly, 3 = monthly}                                                                 |
-| IType                        | {id?: string, name: string}                                                                                    |
-| IProject                     | {id?: string, name: string, types: IType[], tasks?: ITask[]  }                                                 |                                                                                                      
-| IUser                        | {id?: string, email: string, name: string, surname: string, password?: string}                                 |
+| Interface, Enum or Type name | Interface, Enum or Type structure                                                                                                 |
+|------------------------------|-----------------------------------------------------------------------------------------------------------------------------------|
+| ITask                        | {id?: string, projectId: string, title: string, startDate: Date, stopDate: Date, repeatability: ERepeatability, content: string } |
+| ERepeatability               | {0 = None,1 =  daily, 2 = weakly, 3 = monthly}                                                                                    |
+| IType                        | {id?: string, name: string}                                                                                                       |
+| IProject                     | {id?: string, name: string, types: IType[], tasks?: ITask[]  }                                                                    |                                                                                                      
+| IUser                        | {id?: string, email: string, name: string, surname: string, password?: string}                                                    |

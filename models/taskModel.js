@@ -3,21 +3,24 @@
 const {v4: uuidv4} = require('uuid');
 
 const tasks = [{
-    id: uuidv4,
+    id: uuidv4(),
+    projectId: '1',
     title: 'Daily meeting',
     startDate: new Date(2023, 2, 1, 9, 0),
     stopDate: new Date(2023, 2, 28, 9, 30),
     repeatability: 1,
     content: 'daily of our team'
 }, {
-    id: uuidv4,
+    id: uuidv4(),
+    projectId: '1',
     title: 'Sprint review meeting',
     startDate: new Date(2023, 3, 3, 10, 0),
     stopDate: new Date(2023, 3, 31, 11, 30),
     repeatability: 2,
     content: 'Retro'
 }, {
-    id: uuidv4,
+    id: uuidv4(),
+    projectId: '2',
     title: 'Organise retro',
     startDate: new Date(2023, 2, 3, 9, 30),
     stopDate: new Date(2023, 2, 28, 10,),
@@ -27,8 +30,9 @@ const tasks = [{
 
 
 module.exports = class Task {
-    constructor(title, startDate, stopDate, repeatability, content) {
+    constructor(projectId, title, startDate, stopDate, repeatability, content) {
         this.id = uuidv4();
+        this.projectId = projectId;
         this.title = title;
         this.startDate = startDate;
         this.stopDate = stopDate;
@@ -36,18 +40,24 @@ module.exports = class Task {
         this.content = content;
     }
 
-    static getAllTasks() {
-        return tasks;
+    static getAllTasksByProjectId(id) {
+        return tasks.filter(task => task.projectId == id);
     }
 
-    static updateTaskById(id, title, startDate, stopDate, repeatability, content) {
+    static updateTaskById(id, projectId, title, startDate, stopDate, repeatability, content) {
         const index = tasks.findIndex(el => el.id === id);
+        if(index === -1) return false;
         tasks[index] = {...tasks[index], title, startDate, stopDate, repeatability, content};
+        return true
     }
 
     static delete(id) {
         const index = tasks.findIndex(el => el.id === id)
         tasks.splice(index, 1);
+    }
+
+    static getTaskById(taskId) {
+        return tasks.find(task => task.id === taskId)
     }
 
     save() {
