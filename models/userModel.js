@@ -1,40 +1,46 @@
-//	{id?: string, name: string}
-
+//{id?: string, email: string, name: string, surname: string, password?: string}
 const {v4: uuidv4} = require('uuid');
 
-const users = [{id: uuidv4, email: 'john.doe@app.com', name: 'John', surname: 'Doe', password: 'password'}, {
-    id: uuidv4,
-    email: 'josie.smith@app.com',
-    name: 'Josie',
-    surname: 'Smith',
-    password: 'password'
+const data = [{id: '1', email: 'john.doe@app.com', name: 'John', surname: 'Doe', password: 'password'}, {
+    id: '2', email: 'josie.smith@app.com', name: 'Josie', surname: 'Smith', password: 'password'
 }]
 
 
 module.exports = class User {
+
+
     constructor(email, name, surname, password) {
         this.id = uuidv4();
+        this.email = email;
         this.name = name;
         this.surname = surname;
         this.password = password;
     }
 
-    static getAllTypes() {
-        return users;
+    static getUserWithoutPassword(user) {
+        return {id: user.id, email: user.email, name: user.name, surname: user.surname}
     }
 
-    static updateTypeById(id, email, name, surname, password) {
-        const index = users.findIndex(el => el.id === id);
-       users[index] = {...users[index], email, name, surname, password};
+    static getAll() {
+        return data.map(this.getUserWithoutPassword);
+    }
+
+    static updateById(id, email, name, surname, password) {
+        const index = data.findIndex(el => el.id === id);
+       data[index] = {...data[index], email, name, surname, password};
+       console.log(this.getUserWithoutPassword(data[index]))
+       return this.getUserWithoutPassword(data[index]);
     }
 
     static delete(id) {
-        const index = users.findIndex(el => el.id === id)
-        users.splice(index, 1);
+        const index = data.findIndex(el => el.id === id)
+        data.splice(index, 1);
+        return index;
     }
 
     save() {
-        users.push(this);
+        data.push(this);
+        return User.getUserWithoutPassword(this);
     }
 }
 

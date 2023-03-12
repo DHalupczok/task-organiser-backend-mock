@@ -19,9 +19,9 @@ module.exports = class Project {
    static getAllProjects() {
         return projectsData;
     }
-    static updateById(id, project) {
+    static updateById(id, name, types) {
         const index = projectsData.findIndex(el => el.id === id);
-        projectsData[index] = {...projectsData[index], name: project.name, types: project.types};
+        projectsData[index] = {...projectsData[index], name , types };
     }
 
     static delete(id) {

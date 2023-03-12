@@ -43,9 +43,7 @@ exports.deleteExistingTask = (req, res) => {
         res.status(404).send();
         return;
     }
-    const projectId = task.projectId;
     Task.delete(taskId);
-    const responseData = Task.getAllTasksByProjectId(projectId);
     res.status(200);
-    res.send(responseData);
+    res.send();
 }

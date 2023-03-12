@@ -3,7 +3,7 @@
 const {v4: uuidv4} = require('uuid');
 
 const tasks = [{
-    id: uuidv4(),
+    id: '1',
     projectId: '1',
     title: 'Daily meeting',
     startDate: new Date(2023, 2, 1, 9, 0),
@@ -11,7 +11,7 @@ const tasks = [{
     repeatability: 1,
     content: 'daily of our team'
 }, {
-    id: uuidv4(),
+    id: '2',
     projectId: '1',
     title: 'Sprint review meeting',
     startDate: new Date(2023, 3, 3, 10, 0),
@@ -19,7 +19,7 @@ const tasks = [{
     repeatability: 2,
     content: 'Retro'
 }, {
-    id: uuidv4(),
+    id: '3',
     projectId: '2',
     title: 'Organise retro',
     startDate: new Date(2023, 2, 3, 9, 30),
@@ -48,7 +48,7 @@ module.exports = class Task {
         const index = tasks.findIndex(el => el.id === id);
         if(index === -1) return false;
         tasks[index] = {...tasks[index], title, startDate, stopDate, repeatability, content};
-        return true
+        return tasks[index]
     }
 
     static delete(id) {

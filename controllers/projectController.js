@@ -15,17 +15,19 @@ exports.createNewProject = (req, res) => {
 }
 
 exports.editExistingProject = (req, res) => {
-    const updatedProject = req.body;
-    Project.updateById(id, updatedProject)
+    Project.updateById(req.body.id, req.body.name, req.body.types)
     const responseData = Project.getAllProjects();
     res.status(200);
     res.send(responseData);
 }
 
 exports.deleteExistingProject = (req, res) => {
-    const id = req.params.projectId;
+    const id = req.params.id;
+    if (!id) {
+        res.status(404).send();
+        return;
+    }
     Project.delete(id);
-    const responseData = Project.getAllProjects();
     res.status(200);
-    res.send(responseData);
+    res.send();
 }

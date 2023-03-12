@@ -8,9 +8,9 @@ router.get('', projectController.getAllProjects)
 
 router.post('',projectController.createNewProject)
 
-router.put('/:projectId',projectController.editExistingProject)
+router.put('',projectController.editExistingProject)
 
-router.delete('/:projectId', projectController.deleteExistingProject)
+router.delete('/:id', projectController.deleteExistingProject)
 
 module.exports = router;
 

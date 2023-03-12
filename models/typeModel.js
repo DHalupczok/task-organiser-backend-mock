@@ -17,6 +17,7 @@ module.exports = class Type {
     static updateTypeById(id, newName) {
         const index = types.findIndex(el => el.id === id);
         types[index] = {...types[index], name: newName};
+        return types[index];
     }
 
     static delete(id) {
