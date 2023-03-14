@@ -7,7 +7,7 @@ exports.getAllProjects = (req, res) => {
 }
 
 exports.createNewProject = (req, res) => {
-    const newProject = new Project(req.body.name, req.body.types);
+    const newProject = new Project(req.body.name);
     newProject.save();
     const responseData = Project.getAllProjects();
     res.status(200);

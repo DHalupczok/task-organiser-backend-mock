@@ -29,10 +29,10 @@ This app is purely mock api that will serve to develop task organiser frontend a
 ## Data interfaces
 
 
-| Interface, Enum or Type name | Interface, Enum or Type structure                                                                                                 |
-|------------------------------|-----------------------------------------------------------------------------------------------------------------------------------|
-| ITask                        | {id?: string, projectId: string, title: string, startDate: Date, stopDate: Date, repeatability: ERepeatability, content: string } |
-| ERepeatability               | {0 = None,1 =  daily, 2 = weakly, 3 = monthly}                                                                                    |
-| IType                        | {id?: string, projectId: string, name: string}                                                                                    |
-| IProject                     | {id?: string, name: string, types: IType[], tasks?: ITask[]  }                                                                    |                                                                                                      
-| IUser                        | {id?: string, email: string, name: string, surname: string, password?: string}                                                    |
+| Interface, Enum or Type name | Interface, Enum or Type structure                                                                                                                 |
+|------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
+| ITask                        | {id?: string, projectId: string, typeId: string, title: string, startDate: Date, stopDate: Date, repeatability: ERepeatability, content: string } |
+| ERepeatability               | {0 = None,1 =  daily, 2 = weakly, 3 = monthly}                                                                                                    |
+| IType                        | {id?: string, projectId: string, name: string}                                                                                                    |
+| IProject                     | {id?: string, name: string  }                                                                                                                     |                                                                                                      
+| IUser                        | {id?: string, email: string, name: string, surname: string, password?: string}                                                                    |
