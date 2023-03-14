@@ -2,21 +2,22 @@
 
 const { v4: uuidv4 } = require('uuid');
 
-const types = [{id: '7', name: 'Organise daily'}, {id: '8', name: 'Organise planning'}, {id: '9', name: 'Organise retro'}]
+const types = [{id: '7', projectId: '1', name: 'Organise daily'}, {id: '8', projectId: '1', name: 'Organise planning'}, {id: '9', projectId: '2', name: 'Organise retro'}]
 
 
 module.exports = class Type {
-    constructor(name) {
+    constructor(projectId, name) {
         this.id = uuidv4();
+        this.projectId = projectId;
         this.name = name;
     }
 
-   static getAllTypes() {
-        return types;
+   static getAllByProjectId(projectId) {
+        return types.filter(type => type.projectId === projectId);
     }
-    static updateTypeById(id, newName) {
+    static updateById(id, projectId, name) {
         const index = types.findIndex(el => el.id === id);
-        types[index] = {...types[index], name: newName};
+        types[index] = {...types[index], projectId, name: name};
         return types[index];
     }
 
@@ -26,6 +27,7 @@ module.exports = class Type {
     }
     save() {
         types.push(this);
+        return this;
     }
 }
 
