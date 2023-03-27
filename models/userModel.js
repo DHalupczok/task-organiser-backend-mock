@@ -17,6 +17,10 @@ module.exports = class User {
         this.password = password;
     }
 
+    static getUserByEmail(userEmail) {
+        return data.find(user => user.email === userEmail)
+    }
+
     static getUserWithoutPassword(user) {
         return {id: user.id, email: user.email, name: user.name, surname: user.surname}
     }

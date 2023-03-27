@@ -2,11 +2,17 @@
 
 This app is purely mock api that will serve to develop task organiser frontend app. No real database will be used here.
 
+## How to run the app
+
+To launch the app in default settings just type npm start in command line for production mode or npm run dev for development mode ( nodemon is then started so every save in project files restarts the server ). Then app will run on it's default settings (port, secret key, etc...). 
+
+If there is a need to launch the app with different environmental variables they can be passed with launch command. For production mode: API_PORT=1000 TOKEN_SECRET=TEST node app.js, for development mode API_PORT=1000 TOKEN_SECRET=TEST nodemon app.js  
+
 ## Api description
 
 | Operation name            | Path                     | Type   | Request Data                     | Request headers                      | Response codes | Response data                                                                      | Response headers               |
 |---------------------------|--------------------------|--------|----------------------------------|--------------------------------------|----------------|------------------------------------------------------------------------------------|--------------------------------|
-| Login                     | /api/v1/security/login   | POST   | {login: string, password:string} |                                      | 200, 401       | {accessToken: string, refreshToken: string, username: string, userSurname: string} | content-type: application/json |
+| Login                     | /api/v1/security/login   | POST   | {email: string, password:string} |                                      | 200, 401       | {accessToken: string, refreshToken: string, username: string, userSurname: string} | content-type: application/json |
 | Logout                    | /api/v1/security/login   | POST   |                                  | Authorization: bearer [access_token] | 200, 401       |                                                                                    |                                |
 | Get new access token      | /api/v1/security/token   | POST   | {refreshToken: [refresh_token]}  |                                      | 200, 401       | {accessToken: string, refreshToken: string}                                        | content-type: application/json |
 | Get all projects          | /api/v1/projects         | GET    |                                  | Authorization: bearer [access_token] | 200, 401       | IProject[]                                                                         | content-type: application/json |
