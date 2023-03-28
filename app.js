@@ -1,4 +1,5 @@
 require('dotenv').config();
+const authenticatedRoute = require('./middleware/authMiddleware')
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
@@ -10,9 +11,9 @@ const userRoutes = require('./routes/userRoutes')
 const typeRoutes = require('./routes/typeRoutes')
 const authRoutes = require('./routes/authRoutes')
 app.use(bodyParser.json());
-app.use('/api/v1/projects', projectRoutes);
-app.use('/api/v1/tasks', taskRoutes)
-app.use('/api/v1/users', userRoutes)
-app.use('/api/v1/types', typeRoutes)
+app.use('/api/v1/projects', authenticatedRoute, projectRoutes);
+app.use('/api/v1/tasks', authenticatedRoute, taskRoutes)
+app.use('/api/v1/users', authenticatedRoute, userRoutes)
+app.use('/api/v1/types', authenticatedRoute, typeRoutes)
 app.use('/api/v1/security', authRoutes)
 app.listen(API_PORT);
