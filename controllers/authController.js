@@ -22,11 +22,6 @@ exports.login = (req, res) => {
 
 }
 
-exports.logout = (req, res) => {
-    res.status(200);
-    res.send();
-}
-
 exports.getNewToken = (req, res) => {
     const token = req.body.refreshToken;
     if(!token) res.status(400).send();
