@@ -6,7 +6,8 @@ const projectsData = [
     {id: '1', name: 'Project 1'},
     {id: '2', name: 'Project 2'},
     {id: '3', name: 'Work project as scrum master'},
-    {id: '4', name: 'Work project App 1'}
+    {id: '4', name: 'Work project App 1'},
+    {id: '5', name: 'Work project App 2'}
 ]
 
 module.exports = class Project {

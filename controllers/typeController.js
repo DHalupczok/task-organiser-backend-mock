@@ -1,10 +1,15 @@
 const Type = require('../models/typeModel')
 
 exports.getAllByProjectId = (req, res) => {
-    const projectId = req.params.projectId
-    const responseData = Type.getAllByProjectId(projectId);
-    res.status(200);
-    res.send(responseData);
+    try {
+        const projectId = req.params.projectId
+        const responseData = Type.getAllByProjectId(projectId);
+        res.status(200);
+        res.send(responseData);
+    } catch (e) {
+        res.send(e);
+    }
+    
 }
 
 exports.createNew = (req, res) => {

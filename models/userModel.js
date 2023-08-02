@@ -1,8 +1,8 @@
 //{id?: string, email: string, name: string, surname: string, password?: string}
 const {v4: uuidv4} = require('uuid');
 
-const data = [{id: '1', email: 'john.doe@app.com', name: 'Piter', surname: 'Doe', password: 'password'}, {
-    id: '2', email: 'josie.smith@app.com', name: 'Josie', surname: 'Smith', password: 'password'
+const data = [{id: '1', email: 'q', name: 'Piter', surname: 'Doe', password: 'a'}, {
+    id: '2', email: 'qwe', name: 'Josie', surname: 'Smith', password: 'password'
 }]
 
 

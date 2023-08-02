@@ -12,7 +12,7 @@ exports.login = (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
     const user = User.getUserByEmail(email)
-    if (user.password === password) {
+    if (user?.password === password) {
         const {password, ...userWithoutPassword} = user;
         const response = generateTokenResponse(userWithoutPassword);
         res.status(200).send(response);
@@ -34,7 +34,7 @@ exports.getNewToken = (req, res) => {
     } catch (e) {
         console.warn(e)
         if(e.name === 'JsonWebTokenError' || e.name === 'TokenExpiredError') res.status(401).send(e.message);
-        res.status(500).send()
+        res.status(500).send(e)
     }
 
 }
