@@ -4,14 +4,14 @@ This app is purely mock api that will serve to develop task organiser frontend a
 
 ## How to run the app
 
-To launch the app in default settings just type npm start in command line for production mode or npm run dev for development mode ( nodemon is then started so every save in project files restarts the server ). Then app will run on it's default settings (port, secret key, etc...). 
+To launch the app in default settings just type npm start in command line for production mode or npm run dev for development mode ( nodemon is then started so every save in project files restarts the server ). Then app will run on it's default settings (port, secret key, etc...).
 
-If there is a need to launch the app with different environmental variables they can be passed with launch command. For production mode: API_PORT=1000 TOKEN_SECRET=TEST node app.js, for development mode API_PORT=1000 TOKEN_SECRET=TEST nodemon app.js  
+If there is a need to launch the app with different environmental variables they can be passed with launch command. For production mode: API_PORT=1000 TOKEN_SECRET=TEST node app.js, for development mode API_PORT=1000 TOKEN_SECRET=TEST nodemon app.js
 
 ## Api description
 
 | Operation name            | Path                     | Type   | Request Data                     | Request headers                      | Response codes | Response data                               | Response headers               |
-|---------------------------|--------------------------|--------|----------------------------------|--------------------------------------|----------------|---------------------------------------------|--------------------------------|
+| ------------------------- | ------------------------ | ------ | -------------------------------- | ------------------------------------ | -------------- | ------------------------------------------- | ------------------------------ |
 | Login                     | /api/v1/security/login   | POST   | {email: string, password:string} |                                      | 200, 401       | {accessToken: string, refreshToken: string} | content-type: application/json |
 | Get new access token      | /api/v1/security/token   | POST   | {refreshToken: [refresh_token]}  |                                      | 200, 401       | {accessToken: string, refreshToken: string} | content-type: application/json |
 | Get all projects          | /api/v1/projects         | GET    |                                  | Authorization: bearer [access_token] | 200, 401       | IProject[]                                  | content-type: application/json |
@@ -33,11 +33,14 @@ If there is a need to launch the app with different environmental variables they
 
 ## Data interfaces
 
-
 | Interface, Enum or Type name | Interface, Enum or Type structure                                                                                                                 |
-|------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
+| ---------------------------- |---------------------------------------------------------------------------------------------------------------------------------------------------|
 | ITask                        | {id?: string, projectId: string, typeId: string, title: string, startDate: Date, stopDate: Date, repeatability: ERepeatability, content: string } |
-| ERepeatability               | {0 = None,1 =  daily, 2 = weakly, 3 = monthly}                                                                                                    |
+| ERepeatability               | {0 = None,1 = daily, 2 = weakly, 3 = monthly}                                                                                                     |
 | IType                        | {id?: string, projectId: string, name: string}                                                                                                    |
-| IProject                     | {id?: string, name: string  }                                                                                                                     |                                                                                                      
-| IUser                        | {id?: string, email: string, name: string, surname: string, password?: string}                                                                    |
+| IProject                     | {id?: string, name: string }                                                                                                                      |
+| IUser                        | {id?: string, email: string, name: string, surname: string, imageName: string, password?: string}                                                 |
+
+## Images
+
+Image "pexels-photo-1366630.webp" author: Max Andrey, image downloaded from: https://www.pexels.com/photo/sunflower-selective-focus-photography-1366630/
